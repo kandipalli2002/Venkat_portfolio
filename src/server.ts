@@ -7,7 +7,9 @@ import {
 import express from 'express';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { getContext } from '@netlify/angular-runtime/context';
+// import { getContext } from '@netlify/angular-runtime/context';
+import { CommonEngine } from '@angular/ssr/node'
+import { render } from '@netlify/angular-runtime/common-engine'
 
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
@@ -15,6 +17,11 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
+const commonEngine = new CommonEngine()
+
+export async function netlifyCommonEngineHandler(request: Request, context: any): Promise<Response> {
+  return await render(commonEngine)
+}
 
 /**
  * Example Express Rest API endpoints can be defined here.

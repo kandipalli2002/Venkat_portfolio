@@ -55,6 +55,7 @@
     flex: 2;
     padding: 20px;
     text-align: left;
+    margin-bottom: 5%;
   }
   
   .action-buttons {
@@ -249,10 +250,12 @@
     flex-direction: column; 
     gap: 10px;
     margin-top: 5%;
+    height: 115vh;
   }
   .intro-section{
     text-align: center;
     gap: 20px;
+   
   }
   .form-inline ul{
     text-align: center;
